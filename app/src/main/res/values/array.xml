@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pais_nombre">
+        <item>Argentina</item>
+        <item>Perú</item>
+
+    </string-array>
+    <string-array name="pais_codigo_area">
+        <item>+54</item>
+        <item>+51</item>
+    </string-array>
+</resources>

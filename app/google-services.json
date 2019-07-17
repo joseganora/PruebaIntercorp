@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "528270527681",
+    "firebase_url": "https://prueba-intercorp.firebaseio.com",
+    "project_id": "prueba-intercorp",
+    "storage_bucket": "prueba-intercorp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528270527681:android:99e7ea4293d98153",
+        "android_client_info": {
+          "package_name": "ar.prueba.pruebaintercorp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528270527681-1k1bm4i5eret4iar9uk0a0o9rfm9d2sg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ar.prueba.pruebaintercorp",
+            "certificate_hash": "c002cf980b60c6a8e1e545e49ee1d7b3cb142079"
+          }
+        },
+        {
+          "client_id": "528270527681-dl0etf59oculc3rapeab5kuullr3roea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnOzEMvzN5r1EsoZMfQzAqja7Mb4pUFyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528270527681-dl0etf59oculc3rapeab5kuullr3roea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
