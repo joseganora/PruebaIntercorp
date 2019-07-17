@@ -99,23 +99,63 @@ public class CargarDatos extends AppCompatActivity {
         });
     }
     public void sendData( View v){
-        User.setApellido(txt_nombre.getText().toString());
-        User.setNombre(txt_apellido.getText().toString());
-        User.setEdad(Integer.parseInt(txt_edad.getText().toString()));
-        User.setFechaNacimiento(txt_fecha.getText().toString());
-        DatabaseReference myRef = Database.getDB().getReference("usuarios/"+User.getUser().getUid());
-        myRef.child("nombre").setValue(User.getNombre());
-        myRef.child("apellido").setValue(User.getApellido());
-        myRef.child("edad").setValue(User.getEdad());
-        myRef.child("fecha_nacimiento").setValue(User.getFechaNacimiento(), new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                alert_info("Datos cargados exitosamente");
+        if(validar()){
+            User.setApellido(txt_nombre.getText().toString());
+            User.setNombre(txt_apellido.getText().toString());
+            User.setEdad(Integer.parseInt(txt_edad.getText().toString()));
+            User.setFechaNacimiento(txt_fecha.getText().toString());
+            DatabaseReference myRef = Database.getDB().getReference("usuarios/"+User.getUser().getUid());
+            myRef.child("nombre").setValue(User.getNombre());
+            myRef.child("apellido").setValue(User.getApellido());
+            myRef.child("edad").setValue(User.getEdad());
+            myRef.child("fecha_nacimiento").setValue(User.getFechaNacimiento(), new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                    btn_enviar.setText("Actualizar Mis Datos");
+                    alert_info("Datos cargados exitosamente");
 
-            }
-        });
+                }
+            });
+        }
+
 
     }
+
+    private boolean validar() {
+        if(txt_nombre.getText().toString().length()<1){
+            txt_nombre.requestFocus();
+            Toast.makeText(this, "Debes completar tu nombre", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(txt_apellido.getText().toString().length()<1){
+            txt_apellido.requestFocus();
+            Toast.makeText(this, "Debes completar tu apellido", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(txt_edad.getText().toString().length()<1){
+            txt_edad.requestFocus();
+            Toast.makeText(this, "Debes completar tu edad", Toast.LENGTH_LONG).show();
+            return false;
+        }else{
+            try{
+                Integer.parseInt(txt_edad.getText().toString());
+            }catch (NumberFormatException exc){
+                Toast.makeText(this, "No debes incluir letras ni simbolos en tu edad", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
+        if(txt_fecha.getText().toString().length()>10||txt_fecha.getText().toString().length()<8){
+            txt_fecha.requestFocus();
+            Toast.makeText(this, "Debes completar correctamente tu fecha de nacimiento", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+
+
+        return true;
+    }
+
     private void alert_info(String msj) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(msj)
